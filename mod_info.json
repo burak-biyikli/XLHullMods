@@ -1,0 +1,16 @@
+{
+    "id":"xlhullmods",
+    "name":"XL Hull Mods",
+    "author":"[]",
+    "totalConversion":"false",
+    "utility":"false",
+    "version":{
+        "major":0, 
+        "minor":0, 
+        "patch":"01"
+    },
+    "dependencies": [
+    ],
+    "description":"More mods for the mod gods",
+    "gameVersion":"0.96a-RC10",
+}
