@@ -19,8 +19,8 @@ public class ExpandedFighterBays extends BaseHullMod {
 
 	private static Map SpeedPenalty = new HashMap();
 	static {
-		SpeedPenalty.put(HullSize.FRIGATE, 30f);
-		SpeedPenalty.put(HullSize.DESTROYER, 20f);
+		SpeedPenalty.put(HullSize.FRIGATE, 20f);
+		SpeedPenalty.put(HullSize.DESTROYER, 15f);
 		SpeedPenalty.put(HullSize.CRUISER, 10f);
 		SpeedPenalty.put(HullSize.CAPITAL_SHIP, 5f);
 	}
