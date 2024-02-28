@@ -18,6 +18,7 @@ public class FluxCoilInsulation extends BaseHullMod {
 	//Base Flux Disp: 10 20 30 50
 	// Mod Flux Cap:  15 30 45 75  (+5 +10 +15 +25)
 	// Mod Flux Disp: 10 20 30 50  (-1  -2  -3  -5)
+	// Mod Cost:       4  8 12 20
 	
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {		
 		stats.getFluxCapacity().modifyMult(id, CAPACITY_MULT);
