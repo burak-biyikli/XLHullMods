@@ -9,11 +9,11 @@ import com.fs.starfarer.api.impl.hullmods.CompromisedStructure;
 
 public class MiniaturizedMissiles extends BaseHullMod {
 
-	public static final float MISSILE_FIRE_RATE = 4.0f;
-	public static final float MISSILE_COUNT     = 4.0f;
+	public static final float MISSILE_FIRE_RATE = 3.0f;
+	public static final float MISSILE_COUNT     = 3.0f;
 
-	public static final float MISSILE_HP        = 0.20f;
-	public static final float MISSILE_DAMAGE    = 0.30f;
+	public static final float MISSILE_HP        = 0.25f;
+	public static final float MISSILE_DAMAGE    = 0.40f;
 	
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 		stats.getMissileAmmoBonus().modifyMult(id, MISSILE_COUNT);
