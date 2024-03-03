@@ -22,4 +22,9 @@ public class WeightReduction extends BaseHullMod {
 
 		return null;
 	}
+
+	@Override
+	public boolean isSModEffectAPenalty() {
+		return true;
+	}
 }
