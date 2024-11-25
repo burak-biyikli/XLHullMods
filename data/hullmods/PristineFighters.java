@@ -9,9 +9,9 @@ import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 public class PristineFighter extends BaseHullMod {
 
 	public static final float FLUX_BONUS_MULT = 0.15f;
-	public static final float ARMOR_BONUS_MULT = 0.15f;
+	public static final float ARMOR_BONUS_MULT = 0.10f;
 	public static final float HULL_BONUS_MULT = 0.15f;
-	public static final float SPEED_BONUS_MULT = 0.05f;
+	public static final float SPEED_BONUS_MULT = 0.10f;
 	
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 		stats.getFluxCapacity().modifyMult(id, 1.0f + FLUX_BONUS_MULT);
