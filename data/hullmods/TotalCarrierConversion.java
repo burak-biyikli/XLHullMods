@@ -29,11 +29,11 @@ public class TotalCarrierConversion extends BaseHullMod {
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 
 		float BaseCargoCap = stats.getVariant().getHullSpec().getCargo();
-		float bays = (float)((int)((BaseCargoCap/CARGO_REQ_PER_BAY)));		
+		float bays = (float)Math.ceil(BaseCargoCap/CARGO_REQ_PER_BAY);		
 		
-		float cargocost    = CARGO_REQ_PER_BAY * bays;
-		float crewcost     = CREW_REQ_PER_BAY * bays;
-		float supplycost   = SUPPLIES_REQ_PER_BAY * bays;
+		float cargocost    = bays * CARGO_REQ_PER_BAY;
+		float crewcost     = bays * CREW_REQ_PER_BAY;
+		float supplycost   = bays * SUPPLIES_REQ_PER_BAY;
 
 		stats.getNumFighterBays().modifyFlat(id, bays);
 		
