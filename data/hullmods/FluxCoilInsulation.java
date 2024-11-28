@@ -37,7 +37,7 @@ public class FluxCoilInsulation extends BaseHullMod {
 	}
 
 	public String getSModDescriptionParam(int index, HullSize hullSize) {
-		if (index == 1) return "" + (int) (100 * DISSIPATION_MULT_SMOD) + "%";
+		if (index == 0) return "" + (int) (100 * DISSIPATION_MULT_SMOD) + "%";
 		return null;
 	}
 
