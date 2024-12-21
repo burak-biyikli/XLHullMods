@@ -28,11 +28,13 @@ public class AugmentedThrusters extends BaseHullMod {
 
 	public static Map magBonus = new HashMap();
 	static {
-		magBonus.put(HullSize.FRIGATE, 10f);
-		magBonus.put(HullSize.DESTROYER, 20f);
-		magBonus.put(HullSize.CRUISER, 30f);
-		magBonus.put(HullSize.CAPITAL_SHIP, 50f);
+		magBonus.put(HullSize.FRIGATE, 50f);
+		magBonus.put(HullSize.DESTROYER, 100f);
+		magBonus.put(HullSize.CRUISER, 200f);
+		magBonus.put(HullSize.CAPITAL_SHIP, 300f);
 	}
+	
+	public static float HULL_PENALTY = 33f;
 
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 		stats.getMaxSpeed().modifyFlat(id, (Float) speed.get(hullSize));
@@ -43,16 +45,22 @@ public class AugmentedThrusters extends BaseHullMod {
 		stats.getMaxTurnRate().modifyPercent(id, MANEUVER_BONUS);
 
 		if( isSMod(stats) ) {
-			float dissipation = (Float) magBonus.get(hullSize);
-			stats.getFluxDissipation().modifyFlat(id, dissipation);
+			stats.getArmorBonus().modifyFlat(id, (Float) magBonus.get(hullSize));
+			stats.getHullBonus().modifyMult(id, 1.0f - HULL_PENALTY * 0.01f );
 		}
 	}
 
+	@Override
+	public boolean isSModEffectAPenalty() {
+		return true;
+	}
+	
 	public String getSModDescriptionParam(int index, HullSize hullSize) {
 		if (index == 0) return "" + ((Float) magBonus.get(HullSize.FRIGATE)).intValue();
 		if (index == 1) return "" + ((Float) magBonus.get(HullSize.DESTROYER)).intValue();
 		if (index == 2) return "" + ((Float) magBonus.get(HullSize.CRUISER)).intValue();
 		if (index == 3) return "" + ((Float) magBonus.get(HullSize.CAPITAL_SHIP)).intValue();
+		if (index == 4) return "" + ((Float) HULL_PENALTY).intValue() + "%";
 		return null;
 	}
 
