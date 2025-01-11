@@ -8,9 +8,14 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 
 public class ShieldCoilIntegration extends BaseHullMod {
 
-	private static final float CAPACITY_PENALTY      = 20f;
-	private static final float CAPACITY_PENALTY_SMOD = 15f;
-	private static final float SHIELD_BONUS          = 20f;
+	// BaseFlux * (Flux/damage) 
+	// .80 * 1 / .7 = 1.14 (14% better shields net)
+	// .85 * 1 / .7 = 1.21 (21% better shields net) In line with hardened shields which is standard cost
+	// .90 * 1 / .7 = 1.28 (28% better shields net)
+
+	private static final float CAPACITY_PENALTY      = 15f;
+	private static final float CAPACITY_PENALTY_SMOD = 10f;
+	private static final float SHIELD_BONUS          = 30f;
 	
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 	
