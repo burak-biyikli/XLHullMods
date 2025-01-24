@@ -12,13 +12,13 @@ import com.fs.starfarer.api.util.Misc;
 
 public class HybridVents extends BaseHullMod {
 
-	public static final float ARMOR_PENALTY_MULT = 30f;
-	private static final float FLUX_DISSIPATION_MULT = 150f;
+	public static final float ARMOR_PENALTY_MULT = 25f;
+	private static final float FLUX_DISSIPATION_MULT = 50f;
 	
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
 		float mult = (1f - ARMOR_PENALTY_MULT * 0.01f);
 		stats.getArmorBonus().modifyMult(id, mult);
-		stats.getFluxDissipation().modifyMult(id, FLUX_DISSIPATION_MULT * 0.01f);
+		stats.getFluxDissipation().modifyMult(id, 1.0f + FLUX_DISSIPATION_MULT * 0.01f);
 	}
 	
 	public String getDescriptionParam(int index, HullSize hullSize) {
