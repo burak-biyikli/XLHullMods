@@ -16,9 +16,11 @@ public class MiniaturizedMissiles extends BaseHullMod {
 	public static final float MISSILE_DAMAGE    = 0.40f;
 	
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
-		stats.getMissileAmmoBonus().modifyMult(id, MISSILE_COUNT);
 		stats.getMissileRoFMult().modifyMult(id, MISSILE_FIRE_RATE);
-		stats.getMissileAmmoRegenMult().modifyMult(id, MISSILE_FIRE_RATE);
+		
+		stats.getMissileAmmoBonus().modifyMult(id, MISSILE_COUNT);
+		stats.getMissileAmmoRegenMult().modifyMult(id, MISSILE_COUNT);
+		stats.getMissileWeaponFluxCostMod().modifyMult(id, 1.0f / MISSILE_COUNT ); 
 
 		stats.getMissileHealthBonus().modifyMult(id, MISSILE_HP);
 		stats.getMissileWeaponDamageMult().modifyMult(id, MISSILE_DAMAGE);
