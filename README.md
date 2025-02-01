@@ -10,3 +10,4 @@ Currently all additional hull mods are immediately known instead of being seeded
 Same as for any starsector mod, simply copy all files in the repo into:
 
 Fractal Softworks\Starsector\mods\XLHullMods
+Up To Date 2025
