@@ -9,8 +9,17 @@
         "minor":0, 
         "patch":"01"
     },
-    "dependencies": [
-    ],
+    "modPlugin":"com.XLHullMods.plugins.XLHullModsUIPlugin",
+    "dependencies":[
+		{
+			"id": "lw_lazylib",
+			"name": "LazyLib",
+		},
+		{
+			"id": "lunalib",
+			"name": "LunaLib",
+		},
+	],
     "description":"More mods for the mod gods",
     "gameVersion":"0.97a-RC11",
 }
