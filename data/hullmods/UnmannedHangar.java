@@ -44,12 +44,18 @@ public class UnmannedHangar extends BaseHullMod {
 	}
 
 	public boolean isApplicableToShip(ShipAPI ship) {
+		//System.out.println( "" );
+	 	//System.out.println( ship.getVariant().getFittedWings() ); //Seems similar to ship.getVariant().getWings()
+	 	//System.out.println( ship.getVariant().getNonBuiltInWings() );
+	 	//System.out.println( ship.getHullSpec().getFighterBays() );
 		if (ship != null && ship.getHullSpec().getCRToDeploy() > CR_THRESHOLD_UNINSTALLABLE)
       		return false; 
-    	if (ship != null && ship.getHullSpec().getFighterBays() > 0)
-    		return false;    		
 		if (ship != null && ship.getVariant().hasHullMod("converted_bay") )
         	return false;  
+        if (ship != null && ship.getHullSpec().getFighterBays() > 0){
+        	if ( ship.getVariant().getNonBuiltInWings().size() == 0 && ship.getVariant().getFittedWings().size() != 0) return true;
+        	return false;
+        }
         if (ship != null && ship.getHullSpec().isPhase())
         	return false;
         if (ship != null && ship.getVariant().hasHullMod("converted_hangar")) 
@@ -59,11 +65,13 @@ public class UnmannedHangar extends BaseHullMod {
 	
 	public String getUnapplicableReason(ShipAPI ship) {
 		if (ship != null && ship.getHullSpec().getCRToDeploy() > CR_THRESHOLD_UNINSTALLABLE)
-		  return "Ship's combat readiness lost per deployment is too high"; 
-		if (ship != null && ship.getHullSpec().getFighterBays() > 0)
-		  return "Ship already has fighter bays"; 
+		  return "Ship's combat readiness lost per deployment is too high";  
 		if (ship != null && ship.getVariant().hasHullMod("converted_bay"))
 		  return "Ship already had fighter bays"; 		
+		if (ship != null && ship.getHullSpec().getFighterBays() > 0){
+        	if ( ship.getVariant().getNonBuiltInWings().size() == 0 && ship.getVariant().getFittedWings().size() != 0) return null;
+        	return "Ship already has configureable fighter bays";
+        }
 		if (ship != null && ship.getHullSpec().isPhase())
         	return "Can not be installed on a phase ship";
         if (ship != null && ship.getVariant().hasHullMod("converted_hangar")) 
