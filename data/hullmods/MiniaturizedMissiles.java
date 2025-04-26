@@ -11,6 +11,7 @@ public class MiniaturizedMissiles extends BaseHullMod {
 
 	public static final float MISSILE_FIRE_RATE = 3.0f;
 	public static final float MISSILE_COUNT     = 3.0f;
+	public static final float MISSILE_FLUX      = 0.33f;
 
 	public static final float MISSILE_HP        = 0.25f;
 	public static final float MISSILE_DAMAGE    = 0.40f;
@@ -20,7 +21,7 @@ public class MiniaturizedMissiles extends BaseHullMod {
 		
 		stats.getMissileAmmoBonus().modifyMult(id, MISSILE_COUNT);
 		stats.getMissileAmmoRegenMult().modifyMult(id, MISSILE_COUNT);
-		stats.getMissileWeaponFluxCostMod().modifyMult(id, 1.0f / MISSILE_COUNT ); 
+		stats.getMissileWeaponFluxCostMod().modifyMult(id, MISSILE_FLUX ); 
 
 		stats.getMissileHealthBonus().modifyMult(id, MISSILE_HP);
 		stats.getMissileWeaponDamageMult().modifyMult(id, MISSILE_DAMAGE);
@@ -29,8 +30,9 @@ public class MiniaturizedMissiles extends BaseHullMod {
 	public String getDescriptionParam(int index, HullSize hullSize, ShipAPI ship) {
 		if (index == 0) return "" + (int) (100*MISSILE_FIRE_RATE) + "%";
 		if (index == 1) return "" + (int) (100*MISSILE_COUNT) + "%";
-		if (index == 2) return "" + (int) (100*MISSILE_HP) + "%";
-		if (index == 3) return "" + (int) (100*MISSILE_DAMAGE) + "%";
+		if (index == 2) return "" + (int) (100*MISSILE_FLUX) + "%";
+		if (index == 3) return "" + (int) (100*MISSILE_HP) + "%";
+		if (index == 4) return "" + (int) (100*MISSILE_DAMAGE) + "%";
 
 		return null;
 	}
